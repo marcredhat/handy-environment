@@ -8,7 +8,8 @@ LABEL maintainer="marcredhat" \
       io.k8s.display-name="Handy Environment" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder,java,maven,gradle" \
-      io.openshift.s2i.scripts-url="image://$S2IDIR/bin"
+      io.openshift.s2i.scripts-url="image://$S2IDIR/bin" \
+      io.openshift.s2i.assemble-user="root"
 
 COPY s2i $S2IDIR
 RUN chmod 777 -R $S2IDIR
