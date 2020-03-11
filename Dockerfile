@@ -10,7 +10,7 @@ LABEL maintainer="marcredhat" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder,java,maven,gradle" \
       io.openshift.s2i.scripts-url="image://$S2IDIR/bin" \
-      io.openshift.s2i.assemble-user="root"
+      io.openshift.s2i.assemble-user="marc"
 RUN microdnf install shadow-utils
 COPY s2i $S2IDIR
 RUN useradd $USER 
