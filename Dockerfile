@@ -12,20 +12,20 @@ LABEL maintainer="marcredhat" \
       io.openshift.s2i.scripts-url="image://$S2IDIR/bin" \
       io.openshift.s2i.assemble-user="marc"
       
-RUN microdnf -y update  
-RUN microdnf -y install shadow-utils findutils 
+RUN microdnf --installroot /var/tmp/ -y update  
+RUN microdnf --installroot /var/tmp/ -y install shadow-utils findutils 
 COPY s2i $S2IDIR
 RUN useradd $USER 
-RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
+RUN chmod 777 -R $S2IDIR && chmod 777 -R /var/tmp/
 #RUN chown -R $USER /tmp
 RUN chown -R $USER $S2IDIR
 
 RUN chown -R $USER $APPDIR && chmod 777 -R $APPDIR
 
 
-RUN microdnf  install maven -y && \
-    microdnf  install -y unzip && \
-    microdnf  install -y wget && \
+RUN microdnf  --installroot /var/tmp/ install maven -y && \
+    microdnf  --installroot /var/tmp/ install -y unzip && \
+    microdnf  --installroot /var/tmp/ install -y wget && \
     wget https://services.gradle.org/distributions/gradle-6.2.2-bin.zip && \
     mkdir /opt/gradle && \
     unzip -d /opt/gradle gradle-6.2.2-bin.zip && \
