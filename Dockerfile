@@ -13,12 +13,12 @@ LABEL maintainer="marcredhat" \
       io.openshift.s2i.assemble-user="root"
 
 COPY s2i $S2IDIR
-#RUN useradd $USER 
-#RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
-#RUN chown -R $USER /tmp
-#RUN chown -R $USER $S2IDIR
+RUN useradd $USER 
+RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
+RUN chown -R $USER /tmp
+RUN chown -R $USER $S2IDIR
 
-#RUN chown -R $USER $APPDIR && chmod 777 -R $APPDIR
+RUN chown -R $USER $APPDIR && chmod 777 -R $APPDIR
 
 
 RUN dnf -y update 
@@ -38,6 +38,6 @@ WORKDIR $APPDIR
 
 EXPOSE 8080
 
-#USER $USER
+USER $USER
 
 #CMD ["$S2IDIR/bin/run"]
