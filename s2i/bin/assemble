@@ -129,8 +129,9 @@ main () {
         (cd ./${BUILDER_CONTEXT_DIR}/ && gradle build)
         echo "[BUILDER-INFO] gradle run"
         (cd ./${BUILDER_CONTEXT_DIR}/ && gradle run)
-        (mv ./build/libs/*.jar ./)
-        (rm -rf /tmp)
+        (ls -latr ./${BUILDER_CONTEXT_DIR})
+        (find . -name *.jar)
+        #(rm -rf /tmp)
     else
         >&2 echo "[BUILDER-ERROR] - could not find ${POM_FILE}." 
         exit 1
