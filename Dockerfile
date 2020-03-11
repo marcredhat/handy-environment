@@ -42,6 +42,11 @@ WORKDIR $APPDIR
 
 EXPOSE 8080
 
-USER $USER
+RUN chown -R 1001:0 $S2IDIR && \
+    chmod -R g+rw $S2IDIR && \
+    chmod -R g+rx $S2IDIR
+
+# switch to the user 1001
+USER 1001
 
 #CMD ["$S2IDIR/bin/run"]
