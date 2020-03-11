@@ -125,8 +125,10 @@ main () {
 
     elif [ -f $GRADLE_FILE ]; then
         echo "[BUILDER-INFO] gradle build detected"
-        echo "[BUILDER-INFO] run gradle build"
+        echo "[BUILDER-INFO] gradle build"
         (cd ./${BUILDER_CONTEXT_DIR}/ && gradle build)
+        echo "[BUILDER-INFO] gradle run"
+         (cd ./${BUILDER_CONTEXT_DIR}/ && gradle run)
     else
         >&2 echo "[BUILDER-ERROR] - could not find ${POM_FILE}." 
         exit 1
