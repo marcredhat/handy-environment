@@ -1,10 +1,9 @@
-FROM ubuntu:latest
-
+FROM registry.redhat.io
 ARG USER=1001
 ARG S2IDIR="/home/s2i"
 ARG APPDIR="/deployments"
 
-LABEL maintainer="Huseyin Akdogan <hakdogan@kodcu.com>" \
+LABEL maintainer="marcredhat" \
       io.k8s.description="S2I builder for Java Applications." \
       io.k8s.display-name="Handy Environment" \
       io.openshift.expose-services="8080:http" \
@@ -14,29 +13,23 @@ LABEL maintainer="Huseyin Akdogan <hakdogan@kodcu.com>" \
 COPY s2i $S2IDIR
 RUN chmod 777 -R $S2IDIR
 
-COPY jdkinstaller.sh "$APPDIR/"
-COPY parse_yaml.sh "$APPDIR/"
-
 RUN useradd $USER \
     && chown $USER:$USER $APPDIR \
     && addgroup $USER $USER \
     && chmod 777 -R $APPDIR
 
-RUN apt-get update -y && \
-    apt-get install -y software-properties-common
+RUN dnf -y update -y 
 
-RUN ["/bin/bash", "-c", "$APPDIR/jdkinstaller.sh"]
-
-RUN apt-get install maven -y && \
-    apt-get install -y unzip && \
-    apt-get install -y wget && \
-    wget https://services.gradle.org/distributions/gradle-4.10.2-bin.zip && \
+RUN dnf install maven -y && \
+    dnf install -y unzip && \
+    dnf install -y wget && \
+    wget https://services.gradle.org/distributions/gradle-6.2.2-bin.zip && \
     mkdir /opt/gradle && \
-    unzip -d /opt/gradle gradle-4.10.2-bin.zip && \
-    ls /opt/gradle/gradle-4.10.2
+    unzip -d /opt/gradle gradle-6.2.2-bin.zip && \
+    ls /opt/gradle/gradle-6.2.2
 
-ENV PATH=$PATH:/opt/gradle/gradle-4.10.2/bin
-RUN rm -rf /var/lib/apt/lists/*
+ENV PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
+
 
 WORKDIR $APPDIR
 
