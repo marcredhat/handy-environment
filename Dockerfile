@@ -1,7 +1,7 @@
 FROM registry.redhat.io/ubi8/ubi
 ARG USER=marc
 ARG S2IDIR="/home/s2i"
-ARG APPDIR="./"
+ARG APPDIR="/home/s2i"
 
 LABEL maintainer="marcredhat" \
       io.k8s.description="S2I builder for Java Applications." \
@@ -13,9 +13,7 @@ LABEL maintainer="marcredhat" \
 COPY s2i $S2IDIR
 RUN chmod 777 -R $S2IDIR
 
-RUN useradd $USER \
-    && chown $USER:$USER $APPDIR \
-    && chmod 777 -R $APPDIR
+RUN useradd $USER && chown $USER:$USER $APPDIR && chmod 777 -R $APPDIR
 
 RUN dnf -y update -y 
 
