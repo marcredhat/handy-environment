@@ -1,8 +1,8 @@
 FROM registry.redhat.io/ubi8/ubi-minimal
 USER root
 ARG USER=marc
-ARG S2IDIR="/home/s2i"
-ARG APPDIR="/home/s2i"
+ARG S2IDIR="/var/tmp"
+ARG APPDIR="/var/tmp"
 
 LABEL maintainer="marcredhat" \
       io.k8s.description="UBI-8 / Gradle S2I builder for Java Applications." \
@@ -14,8 +14,8 @@ LABEL maintainer="marcredhat" \
 RUN microdnf install shadow-utils findutils
 COPY s2i $S2IDIR
 RUN useradd $USER 
-RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
-#RUN chown -R $USER /tmp
+RUN chmod 777 -R $S2IDIR && chmod 777 -R /var/tmp/
+RUN chown -R $USER /var/tmp
 RUN chown -R $USER $S2IDIR
 
 RUN chown -R $USER $APPDIR && chmod 777 -R $APPDIR
