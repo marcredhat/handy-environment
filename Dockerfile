@@ -1,4 +1,4 @@
-FROM registry.redhat.io/ubi8/ubi
+FROM registry.redhat.io/ubi8/ubi-minimal
 USER root
 ARG USER=marc
 ARG S2IDIR="/home/s2i"
