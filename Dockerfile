@@ -12,7 +12,7 @@ LABEL maintainer="marcredhat" \
       io.openshift.s2i.scripts-url="image://$S2IDIR/bin" \
       io.openshift.s2i.assemble-user="marc"
       
-RUN microdnf -y update && microdnf -y upgrade     
+RUN microdnf -y update  
 RUN microdnf -y install shadow-utils findutils slirp4netns fuse-overlayfs
 COPY s2i $S2IDIR
 RUN useradd $USER 
