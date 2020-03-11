@@ -31,9 +31,11 @@ RUN microdnf  install maven -y && \
     unzip -d /opt/gradle gradle-6.2.2-bin.zip && \
     ls /opt/gradle/gradle-6.2.2
 
+
+RUN microdnf clean all
 ENV PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
 
-ENV _BUILDAH_STARTED_IN_USERNS="" BUILDAH_ISOLATION=chroot
+#ENV _BUILDAH_STARTED_IN_USERNS="" BUILDAH_ISOLATION=chroot
 
 
 WORKDIR $APPDIR
