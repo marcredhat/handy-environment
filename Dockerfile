@@ -66,7 +66,7 @@ LABEL maintainer="marcredhat" \
       io.openshift.tags="builder,java,maven,gradle" \
       io.openshift.s2i.scripts-url="image://$S2IDIR/bin" \
       io.openshift.s2i.assemble-user="marc"
-RUN dnf install shadow-utils findutils
+
 COPY s2i $S2IDIR
 RUN useradd $USER 
 RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
