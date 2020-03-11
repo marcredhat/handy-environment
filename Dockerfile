@@ -1,7 +1,7 @@
 FROM registry.redhat.io/ubi8/ubi
 ARG USER=marc
 ARG S2IDIR="/home/s2i"
-ARG APPDIR="/deployments"
+ARG APPDIR="./"
 
 LABEL maintainer="marcredhat" \
       io.k8s.description="S2I builder for Java Applications." \
