@@ -40,4 +40,4 @@ EXPOSE 8080
 
 USER $USER
 
-CMD ["$S2IDIR/bin/run"]
+#CMD ["$S2IDIR/bin/run"]
