@@ -15,7 +15,7 @@ RUN chmod 777 -R $S2IDIR
 
 RUN useradd $USER \
     && chown $USER:$USER $APPDIR \
-    && addgroup $USER $USER \
+    && groupadd $USER $USER \
     && chmod 777 -R $APPDIR
 
 RUN dnf -y update -y 
