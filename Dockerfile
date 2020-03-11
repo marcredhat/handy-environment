@@ -1,5 +1,5 @@
 FROM registry.redhat.io/ubi8/ubi
-ARG USER=marc
+ARG USER=root
 ARG S2IDIR="/home/s2i"
 ARG APPDIR="/home/s2i"
 
