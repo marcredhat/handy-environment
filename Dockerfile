@@ -13,7 +13,7 @@ LABEL maintainer="marcredhat" \
       io.openshift.s2i.assemble-user="marc"
       
 RUN microdnf -y update  
-RUN microdnf -y install shadow-utils findutils fuse-overlay*
+RUN microdnf -y install shadow-utils findutils 
 COPY s2i $S2IDIR
 RUN useradd $USER 
 RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
