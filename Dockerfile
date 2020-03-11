@@ -1,4 +1,4 @@
-FROM registry.redhat.io
+FROM registry.redhat.io/ubi8/ubi
 ARG USER=1001
 ARG S2IDIR="/home/s2i"
 ARG APPDIR="/deployments"
