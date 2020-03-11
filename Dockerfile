@@ -4,7 +4,7 @@ ARG S2IDIR="/home/s2i"
 ARG APPDIR="/home/s2i"
 
 LABEL maintainer="marcredhat" \
-      io.k8s.description="S2I builder for Java Applications." \
+      io.k8s.description="UBI-8 / Gradle S2I builder for Java Applications." \
       io.k8s.display-name="Handy Environment" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder,java,maven,gradle" \
