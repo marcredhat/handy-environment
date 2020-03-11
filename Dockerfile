@@ -12,7 +12,7 @@ LABEL maintainer="marcredhat" \
       io.openshift.s2i.assemble-user="root"
 
 COPY s2i $S2IDIR
-RUN chmod 777 -R $S2IDIR
+RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
 
 #RUN useradd $USER && chown $USER:$USER $APPDIR && chmod 777 -R $APPDIR
 
