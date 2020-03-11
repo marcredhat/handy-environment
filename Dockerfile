@@ -1,6 +1,6 @@
 FROM registry.redhat.io/ubi8/ubi
 USER root
-ARG USER=root
+ARG USER=marc
 ARG S2IDIR="/home/s2i"
 ARG APPDIR="/home/s2i"
 
@@ -18,7 +18,6 @@ RUN chown -R 1001:0 /tmp
 
 #RUN useradd $USER && chown $USER:$USER $APPDIR && chmod 777 -R $APPDIR
 
-USER 1001
 
 RUN dnf -y update -y 
 
