@@ -21,11 +21,11 @@ RUN chown -R $USER $S2IDIR
 RUN chown -R $USER $APPDIR && chmod 777 -R $APPDIR
 
 
-RUN dnf -y update 
+RUN microdnf -y update 
 
-RUN dnf install maven -y && \
-    dnf install -y unzip && \
-    dnf install -y wget && \
+RUN microdnf  install maven -y && \
+    microdnf  install -y unzip && \
+    microdnf  install -y wget && \
     wget https://services.gradle.org/distributions/gradle-6.2.2-bin.zip && \
     mkdir /opt/gradle && \
     unzip -d /opt/gradle gradle-6.2.2-bin.zip && \
