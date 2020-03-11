@@ -15,7 +15,7 @@ RUN microdnf install shadow-utils
 COPY s2i $S2IDIR
 RUN useradd $USER 
 RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
-RUN chown -R $USER /tmp
+#RUN chown -R $USER /tmp
 RUN chown -R $USER $S2IDIR
 
 RUN chown -R $USER $APPDIR && chmod 777 -R $APPDIR
