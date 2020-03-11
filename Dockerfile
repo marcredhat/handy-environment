@@ -11,7 +11,9 @@ LABEL maintainer="marcredhat" \
       io.openshift.tags="builder,java,maven,gradle" \
       io.openshift.s2i.scripts-url="image://$S2IDIR/bin" \
       io.openshift.s2i.assemble-user="marc"
-RUN microdnf install shadow-utils findutils
+      
+RUN microdnf -y update && microdnf -y upgrade     
+RUN microdnf -y install shadow-utils findutils slirp4netns fuse-overlayfs
 COPY s2i $S2IDIR
 RUN useradd $USER 
 RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
@@ -20,8 +22,6 @@ RUN chown -R $USER $S2IDIR
 
 RUN chown -R $USER $APPDIR && chmod 777 -R $APPDIR
 
-
-RUN microdnf -y update 
 
 RUN microdnf  install maven -y && \
     microdnf  install -y unzip && \
