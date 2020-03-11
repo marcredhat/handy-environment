@@ -21,7 +21,7 @@ RUN chown -R $USER $S2IDIR
 RUN chown -R $USER $APPDIR && chmod 777 -R $APPDIR
 
 
-RUN dnf -y update -y 
+RUN dnf -y update 
 
 RUN dnf install maven -y && \
     dnf install -y unzip && \
