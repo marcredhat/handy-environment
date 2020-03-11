@@ -14,9 +14,11 @@ LABEL maintainer="marcredhat" \
 
 COPY s2i $S2IDIR
 RUN chmod 777 -R $S2IDIR && chmod 777 -R /tmp/
-#RUN chown -R 1001:0 /tmp
+RUN chown -R 1001:0 /tmp
 
 #RUN useradd $USER && chown $USER:$USER $APPDIR && chmod 777 -R $APPDIR
+
+USER 1001
 
 RUN dnf -y update -y 
 
