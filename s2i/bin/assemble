@@ -127,6 +127,7 @@ main () {
     
         (ls -latr ./${BUILDER_CONTEXT_DIR})
         (find . -name *.jar)
+        mv /tmp/artifacts/* ./
         echo "[BUILDER-INFO] gradle build detected"
         echo "[BUILDER-INFO] gradle build"
         (cd ./${BUILDER_CONTEXT_DIR}/ && gradle build)
