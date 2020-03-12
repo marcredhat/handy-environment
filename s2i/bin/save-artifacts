@@ -7,6 +7,8 @@
 # For more information see the documentation:
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
+tar cf - ./build/libs/gs-gradle-0.1.0.jar
 touch /tmp/artifact.txt
 cd /tmp
 tar cf - artifact.txt
+
