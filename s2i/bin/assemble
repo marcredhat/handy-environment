@@ -131,7 +131,7 @@ main () {
         (cd ./${BUILDER_CONTEXT_DIR}/ && gradle build)
         (ls -latr ./${BUILDER_CONTEXT_DIR})
         (find . -name *.jar)
-         if [ -n ${ARTIFACTS_DIR}]; then
+        if [ -n ${ARTIFACTS_DIR} ]; then
             cp ${ARTIFACTS_DIR} ./
         fi
         #echo "[BUILDER-INFO] gradle run"
