@@ -130,6 +130,8 @@ main () {
         echo "[BUILDER-INFO] gradle build detected"
         echo "[BUILDER-INFO] gradle build"
         (cd ./${BUILDER_CONTEXT_DIR}/ && gradle build)
+        (ls -latr ./${BUILDER_CONTEXT_DIR})
+        (find . -name *.jar)
         #echo "[BUILDER-INFO] gradle run"
         #(cd ./${BUILDER_CONTEXT_DIR}/ && gradle run)
         #echo "[BUILDER-INFO] gradlew build -i"
